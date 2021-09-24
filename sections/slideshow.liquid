@@ -16,7 +16,7 @@
 
             {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
             <div id="{{ img_wrapper_id }}" class="lazyload__image-wrapper" data-image-id="{{ image.id }}" style="max-width: {{ max_width }}px">
-              <div class="lazyload__image-wrapper no-js" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
+              <div class="lazyload__image-wrapper no-js image-container" style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
                 <img
                   class="lazyload js {% if forloop.index > 1%}lazypreload{% endif %}"
                   src="{{ image | img_url: '300x' }}"
@@ -25,6 +25,18 @@
                   data-aspectratio="{{ image.aspect_ratio }}"
                   data-sizes="auto"
                   alt="{{ image.alt | escape }}">
+                  <div class="slide-show-product">
+                    {% if block.settings.title %}
+                      <h1> {{ block.settings.title }} </h1>
+                    {% endif %}
+                    {% if block.settings.tag %}
+                      <h2> {{ block.settings.tag }} </h2>
+                    {% endif %}
+                    {% if block.settings.price %}
+                      <h2> ${{ block.settings.price }} </h2>
+                    {% endif %}
+                    <button>Add to cart</button>
+                  </div>
               </div>
             </div>
 
@@ -399,6 +411,36 @@
             "vi": "URL liên kết",
             "zh-CN": "链接 URL",
             "zh-TW": "連結 URL"
+          }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "en": "Heading"
+          },
+          "default": {
+            "en": "Slide Title"
+          }
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": {
+            "en": "Tag"
+          },
+          "default": {
+            "en": "Tag"
+          }
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": {
+            "en": "Price"
+          },
+          "default": {
+            "en": "100"
           }
         }
       ]

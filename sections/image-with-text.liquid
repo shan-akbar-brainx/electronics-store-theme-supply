@@ -35,10 +35,9 @@
   {% endcapture %}
 
   <div class="feature-row">
-    {% if section.settings.layout == 'left' %}
+   
       {{ image_layout }}
-    {% endif %}
-
+   
     <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
       {% if section.settings.title != blank %}
         <h2>{{ section.settings.title | escape }}</h2>
@@ -53,9 +52,7 @@
       {% endif %}
     </div>
 
-    {% if section.settings.layout == 'right' %}
-      {{ image_layout }}
-    {% endif %}
+ 
   </div>
 </div>
 
@@ -352,7 +349,7 @@
       }
     }
   ],
-  "presets": [
+  "presets":[ 
     {
       "name": {
         "cs": "Obrázek s textem",

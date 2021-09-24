@@ -1,0 +1,84 @@
+<hr>
+<div  class="blog-section">
+  <div>
+    {% if section.settings.image != blank %}
+      {%- assign image = section.settings.image -%}
+      {%- assign max_width = 1000 -%}
+      {%- assign max_height = 1500 -%}
+
+      {%- include 'image-logic' with width: max_width, height: max_height -%}
+      {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <div class="lazyload__image-wrapper no-js" style="max-width: {{ max_width }}px">
+        <div style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
+          {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img
+            class="lazyload no-js"
+            data-src="{{ img_url }}"
+            data-widths="[125, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+            data-aspectratio="{{ image.aspect_ratio }}"
+            data-sizes="auto"
+            alt="{{ image.alt | escape }}"
+            {% comment %}style="max-height: {{ height }}px;">{% endcomment %}>
+        </div>
+      </div>
+
+      <noscript>
+        {{ image | img_url: '640x640' | img_tag: section.settings.image.alt }}
+      </noscript>
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+
+
+  <div class="image-overly-section">
+    <div class="image-overly-subsection">
+      <div class="image-overly-subsection-content">
+        {% if section.settings.blog_text != blank %}
+          <p>{{ section.settings.blog_text}}</p>
+        {% endif %}
+      </div>
+      <div>
+        <div class="image-overly-subsection-button">
+          <button type="button">
+            BLOG
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Image With Overly Text",
+	  "class": "index-section",
+    "settings": [ {
+      "type": "image_picker",
+      "id": "image",
+	    "label":"Image"
+	},{
+    "type": "textarea",
+    "id": "blog_text",
+    "label": {
+      "en": "Blog"
+    },
+    "default": {
+      "en": "Blog Description"}} ],
+	"presets": [
+    {
+      "name": "Image with overly text",
+	    "category": "image"
+	}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

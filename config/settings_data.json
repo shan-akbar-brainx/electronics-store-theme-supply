@@ -1,6 +1,6 @@
 {
   "current": {
-    "color_primary": "#9c756f",
+    "color_primary": "#000000",
     "color_secondary": "#f3f3f3",
     "color_accent": "#545454",
     "color_body_bg": "#f3f3f3",
@@ -15,28 +15,28 @@
     "color_footer_bg": "#ffffff",
     "color_footer_text": "#545454",
     "color_footer_social_link": "#545454",
-    "type_base_font": "roboto_n4",
-    "type_base_size": "14px",
-    "type_header_font": "times_new_roman_n7",
+    "type_base_font": "roboto_n7",
+    "type_base_size": "16px",
+    "type_header_font": "roboto_n7",
     "type_header_transform": false,
-    "type_accent_font": "lato_n7",
-    "type_navigation_size": "14px",
-    "type_navigation_transform": true,
+    "type_accent_font": "roboto_n7",
+    "type_navigation_size": "16px",
+    "type_navigation_transform": false,
     "type_button_size": "14px",
     "type_button_transform": true,
     "cart_notes_enable": false,
     "ajax_cart_method": "modal",
-    "social_twitter_link": "",
-    "social_facebook_link": "",
-    "social_pinterest_link": "",
-    "social_google_plus_link": "",
+    "social_twitter_link": "#",
+    "social_facebook_link": "#",
+    "social_pinterest_link": "#",
+    "social_google_plus_link": "#",
     "social_instagram_link": "",
     "social_snapchat_link": "",
     "social_tumblr_link": "",
     "social_youtube_link": "",
     "social_vimeo_link": "",
     "social_fancy_link": "",
-    "social_sharing_style": "is-normal",
+    "social_sharing_style": "is-default",
     "share_facebook": true,
     "share_twitter": true,
     "share_pinterest": true,
@@ -46,44 +46,18 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "",
-          "logo_max_width": "305"
+          "menu": "main-menu",
+          "logo_max_width": "305",
+          "show_announcement": false,
+          "announcement_text": "Announce something here",
+          "announcement_link": ""
         }
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "menu": {
-            "type": "menu",
-            "settings": {
-              "title": "Quick links",
-              "menu": "",
-              "width": "16%"
-            }
-          },
-          "text": {
-            "type": "text",
-            "settings": {
-              "title": "Get in touch",
-              "richtext": "<p>Use this text to share information about your brand with your customers.<\/p>",
-              "width": "50%"
-            }
-          },
-          "newsletter": {
-            "type": "newsletter",
-            "settings": {
-              "title": "Newsletter",
-              "width": "33%"
-            }
-          }
-        },
-        "block_order": [
-          "menu",
-          "text",
-          "newsletter"
-        ],
         "settings": {
           "social_enabled": false,
+          "show_payment_icons": false,
           "legal_menu": ""
         }
       },
@@ -93,16 +67,50 @@
           "slide-0": {
             "type": "image",
             "settings": {
-              "slide": "",
+              "link": ""
+            }
+          },
+          "f83a8e50-32ba-4433-b89d-ae155bbe55ed": {
+            "type": "image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "e9d43fb2-5cd7-449d-a020-3ba2f57c89cd": {
+            "type": "image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "13e98dd9-dae2-4c55-b87e-1602bbf5826b": {
+            "type": "image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "57484a10-0076-4796-b47f-1911b057ff07": {
+            "type": "image",
+            "settings": {
+              "link": ""
+            }
+          },
+          "6a69afe1-b6ea-466c-a2e5-90f5ebfba84c": {
+            "type": "image",
+            "settings": {
               "link": ""
             }
           }
         },
         "block_order": [
-          "slide-0"
+          "slide-0",
+          "f83a8e50-32ba-4433-b89d-ae155bbe55ed",
+          "e9d43fb2-5cd7-449d-a020-3ba2f57c89cd",
+          "13e98dd9-dae2-4c55-b87e-1602bbf5826b",
+          "57484a10-0076-4796-b47f-1911b057ff07",
+          "6a69afe1-b6ea-466c-a2e5-90f5ebfba84c"
         ],
         "settings": {
-          "slider_home_auto": false,
+          "slider_home_auto": true,
           "slider_home_rate": "5000"
         }
       },
@@ -131,59 +139,38 @@
       "collection-row-1": {
         "type": "collection-rows",
         "settings": {
-          "home_featured_row": "",
-          "grid": 4,
-          "rows": 1
-        }
-      },
-      "collection-row-2": {
-        "type": "collection-rows",
-        "settings": {
-          "home_featured_row": "",
-          "grid": 4,
-          "rows": 1
-        }
-      },
-      "collection-row-3": {
-        "type": "collection-rows",
-        "settings": {
-          "home_featured_row": "",
-          "grid": 4,
-          "rows": 1
+          "title": "NEW ARRIVALS",
+          "home_featured_row": "new-arrivals",
+          "grid": 3,
+          "rows": 1,
+          "product_show_saved_amount": true,
+          "product_show_compare_at_price": true
         }
       },
       "featured-content": {
         "type": "featured-content",
-        "settings": {}
-      },
-      "slideshow-2": {
-        "type": "slideshow",
-        "blocks": {
-          "slideshow-2-0": {
-            "type": "image",
-            "settings": {
-              "slide": "",
-              "link": ""
-            }
-          }
-        },
-        "block_order": [
-          "slideshow-2-0"
-        ],
         "settings": {
-          "slider_home_auto": false,
-          "slider_home_rate": "5000"
+          "section_title": "Talk about your brand",
+          "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+          "text_size": "medium"
+        }
+      },
+      "163186509942ec6aa9": {
+        "type": "featured-product",
+        "settings": {
+          "featured_product": "dc-inverter",
+          "product_quantity_enable": true,
+          "product_vendor_enable": false,
+          "product_image_zoom_enable": false,
+          "enable_payment_button": false,
+          "social_sharing_products": false
         }
       }
     },
     "content_for_index": [
       "slideshow",
-      "collection-list",
-      "collection-row-1",
-      "collection-row-2",
-      "collection-row-3",
-      "slideshow-2",
-      "featured-content"
+      "163186509942ec6aa9",
+      "collection-row-1"
     ]
   },
   "presets": {

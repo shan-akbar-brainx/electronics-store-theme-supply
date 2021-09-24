@@ -33,10 +33,10 @@
           {%- include 'image-logic' with width: max_width, height: max_height -%}
 
           {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-          <div class="lazyload__image-wrapper no-js" style="max-width: {{ max_width }}px">
-            <div style="padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
+          <div class=" lazyload__image-wrapper no-js" style="max-width: {{ max_width }}px">
+            <div class="" style=" padding-top:{{ 1 | divided_by: image.aspect_ratio | times: 100}}%;">
               <img
-                class="lazyload no-js"
+                class="lazyload no-js custom-product-image"
                 data-src="{{ img_url }}"
                 data-widths="[125, 180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
                 data-aspectratio="{{ image.aspect_ratio }}"
@@ -60,16 +60,16 @@
       </div>
     </div>
 
-    <p>{{ product.title }}</p>
+    <p class="text-center product-item-title">{{ product.title }}</p>
 
-    <div class="product-item--price">
-      <span class="h1 medium--left">
+    <div class="product-item--price text-center">
+
+      <span class="h5">
         {% if on_sale %}
           <span class="visually-hidden">{{ "products.general.sale_price" | t }}</span>
         {% else %}
           <span class="visually-hidden">{{ "products.general.regular_price" | t }}</span>
         {% endif %}
-        {% include 'price' with product.price %}
         {% if on_sale and section.settings.product_show_compare_at_price %}
           <small>
             <s>
@@ -78,23 +78,73 @@
             </s>
           </small>
         {% endif %}
+        {% include 'price' with product.price %}
       </span>
 
       {%- if product.selected_or_first_available_variant.available and product.selected_or_first_available_variant.unit_price_measurement -%}
         {% include 'product-unit-price', variant: product.selected_or_first_available_variant %}
       {%- endif -%}
     </div>
-    {% if on_sale and section.settings.product_show_saved_amount %}
-      <div class="sale-tag{% unless section.settings.show_compare_at_price %} medium--right{% endunless %}{% if section.settings.product_reviews_enable %} has-reviews{% endif %}">
-        {% assign compare_price = product.compare_at_price %}
-        {% assign product_price = product.price %}
-        {% include 'price-sale' %}
-      </div>
-    {% endif %}
-
-    {% if section.settings.product_reviews_enable %}
-      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
-    {% endif %}
   </a>
+  {% capture "form_class" -%}
+  addToCartForm{% if section.settings.enable_payment_button %} addToCartForm--payment-button{% endif %}
+{%- endcapture %}
 
+{%- capture "form_id" -%}addToCartForm-{{ section.id }}{%- endcapture -%}
+
+{% form 'product', product, class:form_class, id:form_id, data-product-form: '' %}
+  {{ form | payment_terms }}
+
+  <select name="id" id="productSelect-{{ section.id }}" class="product-variants product-variants-{{ section.id }}" {% if product.has_only_default_variant %} data-has-only-default-variant {% endif %}>
+    {% for variant in product.variants %}
+      {% if variant.available %}
+
+        <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+
+  {% if section.settings.product_quantity_enable and section.id !="product-custom-template"%}
+    <label for="quantity" class="quantity-selector quantity-selector-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+    <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+  {% endif %}
+
+  {% if section.settings.product_quantity_message %}
+    <div id="variantQuantity-{{ section.id }}" class="variant-quantity {% if variant.inventory_management and variant.inventory_quantity < 10 and variant.inventory_quantity > 0 %} is-visible{% endif %}">
+        {% include 'svg-definitions' with 'stock-icon' %}
+          {% assign qty = variant.inventory_quantity %}
+          <span id="variantQuantity-{{ section.id }}__message">{{ 'products.product.only_left' | t: count: qty }}</span>
+    </div>
+  {% endif %}
+
+  {% if section.settings.product_incoming_message %}
+    <div id="variantIncoming-{{ section.id }}" class="variant-quantity {% if variant.inventory_management and variant.inventory_quantity <= 0 and variant.incoming %} is-visible{% endif %}">
+      {% if variant.inventory_management and variant.inventory_quantity == 0 or variant.inventory_quantity < 0 and current_variant.incoming %}
+        {% include 'svg-definitions' with 'stock-icon' %}
+        {% if variant.available %}
+          {% assign date = variant.next_incoming_date | date: format: 'date' %}
+          <span id="variantIncoming-{{ section.id }}__message">{{ 'products.product.will_not_ship_until' | t: date: date  }}</span>
+        {% else %}
+          {% assign date = variant.next_incoming_date | date: format: 'date' %}
+          <span id="variantIncoming-{{ section.id }}__message">{{ 'products.product.will_be_in_stock_after' | t: date: date }}</span>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="payment-buttons custom-payment-buttons payment-buttons--{{ section.settings.add_to_cart_button_size }}">
+    <button type="submit" name="add" id="addToCart-{{ section.id }}" >
+      <span id="addToCartText-{{ section.id }}">{{ 'products.product.add_to_cart' | t }}</span>
+    </button>
+
+    {% if section.settings.enable_payment_button %}
+      {{ form | payment_button }}
+    {% endif %}
+  </div>
+{% endform %}
 </div>
