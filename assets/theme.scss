@@ -1,4 +1,4 @@
-{% if settings.ajax_cart_method != 'page' %}
+
 
 /*============================================================================
   Shopify Ajax Cart
@@ -39,9 +39,9 @@ $gutter: 24px;
   Add your theme colors in here, or create new styles.
     - If creating new styles, you may have to restyle text, headers and links
 ==============================================================================*/
-$colorBody: {{ settings.color_body_bg }};
-$colorTextBody: {{ settings.color_body_text }};
-$colorBorder: {{ settings.color_borders }};
+$colorBody: #ffffff;
+$colorTextBody: #333333;
+$colorBorder: #ececec;
 
 /*============================================================================
   Dependency-free breakpoint mixin
@@ -760,7 +760,7 @@ $max: max-width;
 
 }
 
-{% endif %}
+
 
 /*============================================================================
   Shopify Timber v1.4.0
@@ -849,9 +849,9 @@ $breakpoint-has-pull:  ('medium', 'medium-down', 'large');
 ==============================================================================*/
 
 // Supply Theme Colors
-$colorPrimary: {{ settings.color_primary }};
-$colorSecondary: {{ settings.color_secondary }};
-$colorAccent: {{ settings.color_accent }};
+$colorPrimary: #204a80;
+$colorSecondary: #dcdcdc;
+$colorAccent: #ffea00;
 
 // Button colors
 $colorBtnPrimary: $colorPrimary;
@@ -870,28 +870,28 @@ $colorLink: $colorPrimary;
 $colorLinkHover: lighten($colorPrimary, 15%);
 
 // General colors
-$colorBody: {{ settings.color_body_bg }};
-$colorTextBody: {{ settings.color_body_text }};
-$colorHeaders: {{ settings.color_heading_text }};
+$colorBody: #ffffff;
+$colorTextBody: #333333;
+$colorHeaders: #000000;
 
 // Border colors
-$colorBorder: {{ settings.color_borders }};
+$colorBorder: #ececec;
 
 // Site Header
-$headerBackground: {{ settings.color_header_background }};
-$headerText: {{ settings.color_header_text }};
-$headerButtonAndSearch: {{ settings.color_header_cart_search }};
+$headerBackground: #fff;
+$headerText: #fff;
+$headerButtonAndSearch: #fff;
 
 // Nav background
-$colorNav: {{ settings.color_nav_bg }};
-$colorNavText: {{ settings.color_nav_text }};
+$colorNav: #000;
+$colorNavText: #fff;
 
 // Mobile Nav Bar
 $mobileNavBarHeight: 50px;
 
 // Site Footer
-$colorFooterBg: {{ settings.color_footer_bg }};
-$colorFooterText: {{ settings.color_footer_text }};
+$colorFooterBg: #f2f2f2;
+$colorFooterText: #636363;
 
 // Helper colors
 $disabledGrey: #f6f6f6;
@@ -916,49 +916,82 @@ $passwordPageUseBgImage: true;
 
 /*============================================================================
   Get font-families from theme settings
-==============================================================================*/
+==============================================================================*/@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.c496e9cf2031deec4c4bca338faa81971c8631d4.woff2?&hmac=b9a918bf2f468523f460d46c1177ce19f91e4e2d2e985e9790e19f7a38d94a90") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.78b0223375c94b39ce1af7e09a0225f2bb3d05f7.woff?&hmac=8239ed8fbc7d038e4f5187456563d0dfae3f53b3737d96c3d6b510d70dafb13d") format("woff");
+}
 
-{%- assign header_font = settings.type_header_font -%}
-{%- assign base_font = settings.type_base_font -%}
-{%- assign accent_font = settings.type_accent_font -%}
-{%- assign base_font_bold = base_font | font_modify: 'weight', 'bolder' -%}
-{%- assign base_font_italic = base_font | font_style: 'italic' -%}
-{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n5.e72d00d31ae5399d260a80ec70322c62c1819762.woff2?&hmac=a51355a3cbe15aebc1c1554760a284fd97876d256948d4151d76b08cd7a65c73") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n5.18a018b6c83e89030c5d70a6d4c02c969f228500.woff?&hmac=1f425240c6882b6b59bf030962238f189bee59b0451390685d40a5a2eb939f4b") format("woff");
+}
 
-{{ header_font | font_face }}
-{{ base_font | font_face }}
-{{ accent_font | font_face }}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n5.e72d00d31ae5399d260a80ec70322c62c1819762.woff2?&hmac=a51355a3cbe15aebc1c1554760a284fd97876d256948d4151d76b08cd7a65c73") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n5.18a018b6c83e89030c5d70a6d4c02c969f228500.woff?&hmac=1f425240c6882b6b59bf030962238f189bee59b0451390685d40a5a2eb939f4b") format("woff");
+}
 
-{{ base_font_bold | font_face }}
-{{ base_font_italic | font_face }}
-{{ base_font_bold_italic | font_face }}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.c496e9cf2031deec4c4bca338faa81971c8631d4.woff2?&hmac=b9a918bf2f468523f460d46c1177ce19f91e4e2d2e985e9790e19f7a38d94a90") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.78b0223375c94b39ce1af7e09a0225f2bb3d05f7.woff?&hmac=8239ed8fbc7d038e4f5187456563d0dfae3f53b3737d96c3d6b510d70dafb13d") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n5.e72d00d31ae5399d260a80ec70322c62c1819762.woff2?&hmac=a51355a3cbe15aebc1c1554760a284fd97876d256948d4151d76b08cd7a65c73") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_n5.18a018b6c83e89030c5d70a6d4c02c969f228500.woff?&hmac=1f425240c6882b6b59bf030962238f189bee59b0451390685d40a5a2eb939f4b") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_i7.83866c3eec90071fa974c17980ffb42977f9e667.woff2?&hmac=49e2f753aa1bbed2499a3208c3f2e6969080a740e643ad544e4e9d95dbdd13a9") format("woff2"),
+       url("https://fonts.shopifycdn.com/montserrat/montserrat_i7.25524241b12d864609c85325613d60efcf1a87e3.woff?&hmac=52d5d1f52cacaac04dec2f10df0bcaeec767bd41569a43d36480d4a16030455d") format("woff");
+}
+
 
 
 // Header Font
-$headerFontStack: {{ header_font.family }}, {{ header_font.fallback_families}};
-$headerFontWeight: {{ header_font.weight }};
-$headerFontStyle: {{ header_font.style }};
+$headerFontStack: Montserrat, sans-serif;
+$headerFontWeight: 700;
+$headerFontStyle: normal;
 
 // Body Font
-$baseFontStack:  {{ base_font.family }}, {{ base_font.fallback_families}};
-$baseFontSize: {{ settings.type_base_size }};
-$baseFontStyle: {{ base_font.style }};
-$baseFontWeight: {{ base_font.weight }};
-$baseFontBoldWeight: {{ base_font_bold.weight | default: 700 }};
+$baseFontStack:  Montserrat, sans-serif;
+$baseFontSize: 12px;
+$baseFontStyle: normal;
+$baseFontWeight: 500;
+$baseFontBoldWeight: 700;
 
 // Navigation and Button Font
-$accentFontStack: {{ accent_font.family }}, {{ accent_font.fallback_families}};
-$accentFontWeight: {{ accent_font.weight }};
-$accentFontStyle: {{ accent_font.style }};
+$accentFontStack: Montserrat, sans-serif;
+$accentFontWeight: 500;
+$accentFontStyle: normal;
 
 // Icons
 @font-face {
   font-family: "icons";
-  src: url('{{ 'icons.eot' | asset_url }}');
-  src: url('{{ 'icons.eot' | asset_url }}#iefix') format("embedded-opentype"),
-       url('{{ 'icons.woff' | asset_url }}') format("woff"),
-       url('{{ 'icons.ttf' | asset_url }}') format("truetype"),
-       url('{{ 'icons.svg' | asset_url }}#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/icons.eot?v=12799323123844063080');
+  src: url('//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/icons.eot?v=12799323123844063080#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/icons.woff?v=12824116054993862840') format("woff"),
+       url('//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/icons.ttf?v=14842525264320281252') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/icons.svg?v=3824197220449812877#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1620,10 +1653,10 @@ html, body {
   Simply upload a file called 'bg.jpg' and delete lines as necessary.
 ==============================================================================*/
 // body {
-  // background: url({{ 'bg.jpg' | asset_url }}) 0 0 repeat scroll;
-  // background: url({{ 'bg.jpg' | asset_url }}) 0 0 no-repeat scroll;
-  // background: url({{ 'bg.jpg' | asset_url }}) 0 0 repeat fixed;
-  // background: url({{ 'bg.jpg' | asset_url }}) 0 0 no-repeat fixed;
+  // background: url(//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/bg.jpg?2705) 0 0 repeat scroll;
+  // background: url(//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/bg.jpg?2705) 0 0 no-repeat scroll;
+  // background: url(//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/bg.jpg?2705) 0 0 repeat fixed;
+  // background: url(//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/bg.jpg?2705) 0 0 no-repeat fixed;
 
   // Fullscreen background
   // @include prefix('background-size', 'cover');
@@ -1736,9 +1769,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $headerFontStack;
   font-weight: $headerFontWeight;
   font-style: $headerFontStyle;
-  {% if settings.type_header_transform %}
-  text-transform: uppercase;
-  {% endif %}
+  
 
   a {
     text-decoration: none;
@@ -2108,10 +2139,8 @@ html input[disabled] {
   font-family: $accentFontStack;
   font-weight: $accentFontWeight;
   font-style: $accentFontStyle;
-  font-size: {{ settings.type_button_size }};
-  {% if settings.type_button_transform %}
-  text-transform: uppercase;
-  {% endif %}
+  font-size: 14px;
+  
   @include transition(background-color 0.2s ease-out);
 
   &.btn--add-to-cart {
@@ -2121,7 +2150,7 @@ html input[disabled] {
 
   &.btn--small {
     padding: 8px 12px 7px;
-    font-size: {{ settings.type_button_size }} - 2;
+    font-size: 14px - 2;
   }
 
   &.btn--wide {
@@ -2455,7 +2484,7 @@ select {
           appearance: none;
   background-position: right center;
   background: {
-    image: url('{{ 'arrow-down.svg' | asset_url }}');
+    image: url('//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/arrow-down.svg?v=582110932781403906');
     repeat: no-repeat;
     position: right 10px center;
     color: $colorBody;
@@ -2718,11 +2747,11 @@ label.error {
   }
 
   a {
-    color: {{ settings.color_footer_social_link }};
+    color: #bbbbbb;
     @include transition(color 0.2s ease-out);
 
     &:hover {
-      color: darken({{ settings.color_footer_social_link }}, 15%);
+      color: darken(#bbbbbb, 15%);
       @include transition(color 0.05s ease-in);
     }
   }
@@ -3119,7 +3148,7 @@ $shareBorderColor: #ececec;
     font-family: $accentFontStack;
     font-weight: $accentFontWeight;
     font-style: $accentFontStyle;
-    font-size: {{ settings.type_button_size }};
+    font-size: 14px;
     line-height: normal;
   }
   input:-ms-input-placeholder {
@@ -3212,10 +3241,8 @@ $shareBorderColor: #ececec;
   font-family: $accentFontStack;
   font-weight: $accentFontWeight;
   font-style: $accentFontStyle;
-  font-size: {{ settings.type_navigation_size }};
-  {% if settings.type_navigation_transform %}
-  text-transform: uppercase;
-  {% endif %}
+  font-size: 14px;
+  
   cursor: default;
 
   li {
@@ -3238,7 +3265,7 @@ $shareBorderColor: #ececec;
   button {
     background: none;
     border: 0;
-    font-size: {{ settings.type_navigation_size }};
+    font-size: 14px;
     text-transform: uppercase;
   }
 
@@ -3416,10 +3443,8 @@ $shareBorderColor: #ececec;
   font-family: $accentFontStack;
   font-weight: $accentFontWeight;
   font-style: $accentFontStyle;
-  font-size: {{ settings.type_navigation_size }};
-  {% if settings.type_navigation_transform %}
-  text-transform: uppercase;
-  {% endif %}
+  font-size: 14px;
+  
   cursor: default;
 
   li {
@@ -5210,7 +5235,7 @@ img.mfp-img {
 
 .spr-badge-starrating,
 .spr-icon {
-  color: {{ settings.product_reviews_star_color }};
+  color: #e5c649;
   font-size: inherit;
 }
 
@@ -5244,7 +5269,7 @@ img.mfp-img {
   width: 100%;
 
   @if $passwordPageUseBgImage {
-    background-image: url({{ 'password-page-background.jpg' | asset_url }});
+    background-image: url(//cdn.shopify.com/s/files/1/0600/8838/5729/t/12/assets/password-page-background.jpg?v=12987344696580752000);
     background-size: cover;
     background-repeat: no-repeat;
     color: #ffffff;
@@ -5788,7 +5813,7 @@ $color-blankstate-background: rgba($colorTextBody, 0.1);
   }
 
   .icon-pin {
-    font-size: {{ settings.type_button_size }} * 0.8;
+    font-size: 14px * 0.8;
   }
 }
 

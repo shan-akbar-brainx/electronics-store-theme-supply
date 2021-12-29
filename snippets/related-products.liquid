@@ -1,4 +1,4 @@
-{% assign number_of_products = 5 %}
+{% assign number_of_products = 3 %}
 {% assign number_of_products_to_fetch = number_of_products | plus: 1 %}
 {%- assign width = '195' -%}
 {%- assign height = '125' -%}
@@ -13,8 +13,7 @@
 {% endif %}
 
 {% if collection and collection.products_count > 1 %}
-  <hr>
-  <h2 class="h1">{{ 'products.general.related_products' | t }}</h2>
+  <h2 class="h1 text-center">{{ 'products.general.related_products' | t }}</h2>
   <div class="grid-uniform">
     {% assign current_product = product %}
     {% assign current_product_found = false %}
